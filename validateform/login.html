@@ -6,11 +6,12 @@
 </head>
 <body>
   <div id="wrapper">
+    <h1>Introduzca su Usuario</h1>
    <form method="POST" action="index.html" onsubmit="return Validate()" name="vform" >
-   	<div id="email_div">
+   	<div id="mail_div">
    	  <label>Email</label> <br>
-   	  <input type="email" name="email" class="textInput">
-   	  <div id="email_error"></div>
+   	  <input type="mail" name="mail" class="textInput">
+   	  <div id="mail_error"></div>
    	</div>
    	<div id="password_div">
    	  <label>Contraseña</label> <br>
@@ -27,24 +28,37 @@
 <!-- adding javascript -->
 <script type="text/javascript">
 	// SELECTING ALL TEXT ELEMENTS
-var email = document.forms['vform']['email'];
+var mail = document.forms['vform']['mail'];
 var password = document.forms['vform']['password'];
 // SELECTING ALL ERROR DISPLAY ELEMENTS
-var email_error = document.getElementById('email_error');
+var email_error = document.getElementById('mail_error');
 var password_error = document.getElementById('password_error');
 // SETTING ALL EVENT LISTENERS
-email.addEventListener('blur', emailVerify, true);
+mail.addEventListener('blur', mailVerify, true);
 password.addEventListener('blur', passwordVerify, true);
 // validation function
+function validar_mail( mail ) 
+{
+    var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(mail) ? true : false;
+}
 function Validate() {
   // validate email
-  if (email.value == "") {
-    email.style.border = "1px solid red";
-    document.getElementById('email_div').style.color = "red";
-    email_error.textContent = "Se requiere una dirección de Email";
-    email.focus();
+  if (mail.value == "") {
+    mail.style.border = "1px solid red";
+    document.getElementById('mail_div').style.color = "red";
+    mail_error.textContent = "Se requiere una dirección de Email";
+    mail.focus();
     return false;
   }
+  if ((validar_mail(mail.value)) == false)
+{
+    mail.style.border = "1px solid red";
+    document.getElementById('mail_div').style.color = "red";
+    mail_error.textContent = "El email NO es correcto";
+    mail.focus();
+    return false;
+}
   // validate password
   if (password.value == "") {
     password.style.border = "1px solid red";
@@ -53,13 +67,21 @@ function Validate() {
     password.focus();
     return false;
   }
+   if (password.value.length < 6) {
+    password.style.border = "1px solid red";
+    document.getElementById('password_div').style.color = "red";
+    password_error.textContent = "La contraseña debe tener almenos 6 carácteres";
+    password.focus();
+    return false;
+  }
 }
+
 // event handler functions
-function emailVerify() {
-  if (email.value != "") {
-  	email.style.border = "1px solid #5e6e66";
-  	document.getElementById('email_div').style.color = "#5e6e66";
-  	email_error.innerHTML = "";
+function mailVerify() {
+  if (mail.value != "") {
+  	mail.style.border = "1px solid #5e6e66";
+  	document.getElementById('mail_div').style.color = "#5e6e66";
+  	mail_error.innerHTML = "";
   	return true;
   }
 }

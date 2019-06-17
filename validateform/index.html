@@ -7,12 +7,26 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+ <style type="text/css">
+ #validations {
+        position:absolute;
+        right:10px;
+        top:50px;
+        width:120px;
+        height:45px;
+        z-index:5;
+        text-align:right;
+      } 
+ </style>
     <title>Tienda de Cómics</title>
   </head>
   <body>
    <body>
   <img src="logo.png" alt="Tienda de Cómics" class="img-fluid" alt="Responsive image"/>
+  <div id="validations">
+    <a href="register.html"><button type="button" class="btn btn-secondary">Registrarse</button></a>
+    <a href="login.html"><button type="button" class="btn btn-success">Entrar</button></a>
+  </div>
   <img src="shopping.png" align="right" width="40" class="img-fluid" alt="Responsive image"/> 
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <ul class="navbar-nav mr-auto">
@@ -36,18 +50,6 @@
      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
    </form>
   </ul>
-    <ul class="navbar-nav ml-auto">
-    <div class="btn-group dropup">
-  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Usuario
-  </button>
-  <div class="dropdown-menu">
-     <a class="dropdown-item" href="register.html">Registrarse</a>
-          <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="login.html">Entrar</a> 
-  </div>
-</div>
-      </ul>
 </nav>
 <div class="container py-5">
     <li><b>Novedades</b></li>

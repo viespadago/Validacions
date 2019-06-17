@@ -2,7 +2,7 @@
   width: 30%;
   margin: 50px auto;
   padding: 50px;
-  background: #D7FBFF;
+  background: #a9b0b6;
 }
 form {
   margin: 30px auto;
@@ -19,12 +19,22 @@ form {
 .textInput:focus {
   outline: none;
 }
+.select  {
+  border: none;
+  height: 28px;
+  margin: 2px;
+  border: 1px solid #6B7363;
+  font-size: 1em;
+  padding: 5px;
+  width: 95%;
+}  
+
 .btn {
   width: 98.6%;
   border: none;
   margin-top: 5px;
   color: white;
-  background-color: #3b5998;
+  background-color: #2eb424;
   border-radius: 5px;
   padding: 12px;
 }
