@@ -101,6 +101,7 @@ province.addEventListener('blur', provinceVerify, true);
 mail.addEventListener('blur', mailVerify, true);
 password.addEventListener('blur', passwordVerify, true);
 // validation function
+var ok = true;
 function validar_mail( mail ) 
 {
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -113,14 +114,14 @@ function Validate() {
     document.getElementById('username_div').style.color = "red";
     name_error.textContent = "Se requiere que introduzca su nombre";
     username.focus();
-    return false;
+    ok = false;
   }
   if (username.value.length < 3) {
     username.style.border = "1px solid red";
     document.getElementById('username_div').style.color = "red";
     name_error.textContent = "Su nombre debe tener por lo menos 3 letras";
     username.focus();
-    return false;
+    ok = false;
   }
   // validate address
   if (address.value == "") {
@@ -128,7 +129,7 @@ function Validate() {
     document.getElementById('address_div').style.color = "red";
     address_error.textContent = "Se requiere su dirección postal para el envio";
     address.focus();
-    return false;
+    ok = false;
   }
    // validate province
   if (province.value == "0") {
@@ -136,7 +137,7 @@ function Validate() {
     document.getElementById('province_div').style.color = "red";
     province_error.textContent = "Seleccione su provincia";
     province.focus();
-    return false;
+    ok = false;
   }
   // validate email
   if (mail.value == "") {
@@ -144,7 +145,7 @@ function Validate() {
     document.getElementById('mail_div').style.color = "red";
     mail_error.textContent = "Se requiere una dirección de Email";
     mail.focus();
-    return false;
+    ok = false;
   }
   if ((validar_mail(mail.value)) == false)
 {
@@ -152,7 +153,7 @@ function Validate() {
     document.getElementById('mail_div').style.color = "red";
     mail_error.textContent = "El email NO es correcto";
     mail.focus();
-    return false;
+    ok = false;
 }
   // validate password
   if (password.value == "") {
@@ -161,7 +162,7 @@ function Validate() {
     password_confirm.style.border = "1px solid red";
     password_error.textContent = "Se requiere una contraseña";
     password.focus();
-    return false;
+    ok = false;
   }
   if (password.value.length < 6) {
     password.style.border = "1px solid red";
@@ -169,7 +170,7 @@ function Validate() {
     password_confirm.style.border = "1px solid red";
     password_error.textContent = "La contraseña debe tener almenos 6 carácteres";
     password.focus();
-    return false;
+    return ok;
   }
   // check if the two passwords match
   if (password.value != password_confirm.value) {

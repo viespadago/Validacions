@@ -37,6 +37,7 @@ var password_error = document.getElementById('password_error');
 mail.addEventListener('blur', mailVerify, true);
 password.addEventListener('blur', passwordVerify, true);
 // validation function
+var ok = true;
 function validar_mail( mail ) 
 {
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -49,7 +50,7 @@ function Validate() {
     document.getElementById('mail_div').style.color = "red";
     mail_error.textContent = "Se requiere una dirección de Email";
     mail.focus();
-    return false;
+    ok = false;
   }
   if ((validar_mail(mail.value)) == false)
 {
@@ -57,7 +58,7 @@ function Validate() {
     document.getElementById('mail_div').style.color = "red";
     mail_error.textContent = "El email NO es correcto";
     mail.focus();
-    return false;
+    ok = false;
 }
   // validate password
   if (password.value == "") {
@@ -65,14 +66,14 @@ function Validate() {
     document.getElementById('password_div').style.color = "red";
     password_error.textContent = "Se requiere una contraseña";
     password.focus();
-    return false;
+    ok = false;
   }
    if (password.value.length < 6) {
     password.style.border = "1px solid red";
     document.getElementById('password_div').style.color = "red";
     password_error.textContent = "La contraseña debe tener almenos 6 carácteres";
     password.focus();
-    return false;
+    return ok;
   }
 }
 
